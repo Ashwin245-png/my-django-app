@@ -45,7 +45,7 @@ def admin(request):
     
 
 
-
+@login_required(login_url='/login/')# decorator for inbuilt login required function
 def delete_app(request, id):
     queryset = App.objects.get(id=id)
     queryset.delete()
@@ -101,7 +101,7 @@ def user_login(request):
     return render(request, 'login.html')
 
 
-#@login_required(login_url='/login/')# decorator for inbuilt login required function
+@login_required(login_url='/login/')# decorator for inbuilt login required function
 def home(request):
    queryset=App.objects.all()
    context= {'App': queryset}
@@ -116,6 +116,7 @@ def logout_page(request):
 class MainView(TemplateView):
    template_name = 'home.html'
 
+@login_required(login_url='/login/')# decorator for inbuilt login required function
 def file_upload_view(request):
    #print(request.FILES)
    if request.method == 'POST':
