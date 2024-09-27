@@ -1,0 +1,316 @@
+{% extends 'index.html' %}
+
+{% block title %}Home Page{% endblock %}
+{% block extra_css %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">  
+<style>
+
+    /* Style the body to center the profile container */
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+/* Profile container styles */
+.profile-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+}
+
+/* Profile header styles */
+.profile-header {
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+h3 {
+    margin: 10px 0 5px;
+}
+
+p {
+    margin: 5px 0;
+}
+
+/* Profile details section */
+.profile-details {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.profile-details p {
+    margin: 5px 0;
+}
+
+/* Edit profile button */
+.edit-profile-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.edit-profile-btn:hover {
+    background-color: #45a049;
+}
+
+/* Style the body to center the task container */
+.tasks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+/* Task container */
+.task-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+}
+
+/* Table styles */
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.task-table th, .task-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.task-table th {
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.task-table td {
+    text-align: center;
+}
+
+.upload-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.upload-btn:hover {
+    background-color: #45a049;
+}
+
+/* Style the body to center the points container */
+.points {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+/* Points container */
+.points-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+}
+
+/* Points summary section */
+.points-summary {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.total-points {
+    color: #4CAF50;
+    font-size: 24px;
+}
+
+.pending-points {
+    color: #FF9800;
+    font-size: 20px;
+}
+
+/* Points table styles */
+.points-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.points-table th, .points-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.points-table th {
+    background-color: #
+}
+.upload-area {
+    border: 2px dashed #4CAF50;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.upload-area p {
+    margin: 0;
+}
+
+.file-input {
+    display: none; /* Hide the default file input */
+}
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div class='profile'>
+<div class="profile-container">
+    <h2>User Profile</h2>
+    <div class="profile-header">
+        <img src="profile-pic.jpg" alt="Profile Picture" class="profile-pic">
+        <h3>John Doe</h3>
+        <p>Email: john.doe@example.com</p>
+    </div>
+    
+    <div class="profile-details">
+        <h4>Profile Information</h4>
+        <p><strong>Name:</strong> John Doe</p>
+        <p><strong>Email:</strong> john.doe@example.com</p>
+        <p><strong>Joined:</strong> January 1, 2020</p>
+    </div>
+    
+    <button class="edit-profile-btn">Edit Profile</button>
+</div>
+</div>
+<div class='tasks'>
+<div class="task-container">
+    <h2>Your Tasks</h2>
+    
+    <table class="task-table">
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Description</th>
+                <th>Points</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Task 1</td>
+                <td>Download the XYZ App</td>
+                <td>100</td>
+                <td>Pending</td>
+                <td>
+                    <div class="upload-area" id="upload-area-1">
+                        <p>Drag & drop your screenshot here</p>
+                        <input type="file" accept="image/*" class="file-input" id="file-input-1" />
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td>Task 2</td>
+                <td>Complete the survey</td>
+                <td>50</td>
+                <td>Completed</td>
+                <td>---</td>
+            </tr>
+            <tr>
+                <td>Task 3</td>
+                <td>Invite 3 friends</td>
+                <td>150</td>
+                <td>Pending</td>
+                <td>
+                    <div class="upload-area" id="upload-area-1">
+                        <p>Drag & drop your screenshot here</p>
+                        <input type="file" accept="image/*" class="file-input" id="file-input-1" />
+                    </div>               
+                 </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+
+<div class='points'>
+    <div class="points-container">
+        <h2>Your Points</h2>
+        
+        <div class="points-summary">
+            <h3>Total Points: <span class="total-points">300</span></h3>
+            <h4>Pending Points: <span class="pending-points">50</span></h4>
+        </div>
+
+        <h3>Points History</h3>
+        <table class="points-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Task</th>
+                    <th>Points Earned</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2024-09-20</td>
+                    <td>Download XYZ App</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>2024-09-18</td>
+                    <td>Complete Survey</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>2024-09-16</td>
+                    <td>Invite 3 Friends</td>
+                    <td>150</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+{% endblock %}
