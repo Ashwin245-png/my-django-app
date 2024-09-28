@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'myprojectdb',
         'USER': 'myprojectuser',
         'PASSWORD': 'password',
-        'HOST': 'localhost',  # If you're using a cloud database, replace with the hostname
+        'HOST': '127.0.0.1',  # If you're using a cloud database, replace with the hostname
         'PORT': '5432',
     }
 }
