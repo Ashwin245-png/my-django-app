@@ -83,7 +83,7 @@
 <div class="login-container mb-5">
     <h2>Login</h2>
     <hr>
-    <form action="/login/" method="POST">
+    <form action= "{% url 'login' %}" method="POST">
         {% csrf_token %}  
         <div class="input-group">
             <label for="username">Username or Email</label>

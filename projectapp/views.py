@@ -11,6 +11,10 @@ from django.http import JsonResponse,HttpResponse
 # Create your views here.
 @login_required(login_url='/login/')# decorator for inbuilt login required function
 def admin(request):
+
+    if request.user.username != 'admin':
+        return HttpResponse('<h1>access_denied.html</h1>')  # Render an access denied page or redirect
+
     if request.method == 'POST':
         data=request.POST
         app_name=    data.get('app name')
@@ -35,9 +39,7 @@ def admin(request):
     users= User.objects.all()
     context = {'App': queryset, 'users':users}
 
-    if request.user.username != 'admin':
-        return HttpResponse('<h1>access_denied.html</h1>')  # Render an access denied page or redirect
-
+    
 
     return render(request, 'index.html', context)
 
@@ -63,7 +65,7 @@ def signup(request):
         user=User.objects.filter(username=username)
         if user.exists():
          messages.info(request, "Username already taken")
-         return redirect('/signup/')
+         return redirect('signup')
     
         user=User.objects.create(
             username=username,
@@ -72,7 +74,7 @@ def signup(request):
         user.set_password(password)
         user.save()
         messages.info(request, "Account created succesfully")
-        return redirect('/signup/')
+        return redirect('signup')
 
     return render(request, 'signup.html')
     
@@ -94,14 +96,14 @@ def user_login(request):
          return redirect('/login/')
         else: 
             login(request, user)
-            return redirect('/home/')
+            return redirect('home')
     
 
     
     return render(request, 'login.html')
 
 
-@login_required(login_url='/login/')# decorator for inbuilt login required function
+@login_required(login_url='login')# decorator for inbuilt login required function
 def home(request):
    queryset=App.objects.all()
    context= {'App': queryset}
