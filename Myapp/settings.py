@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ylfn%8xjf01p@a*id+rd=7peebo)ju2o$=oh^_dku%xct9b_4w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'Myapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/ 'templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,12 +76,8 @@ WSGI_APPLICATION = 'Myapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'myprojectdb',
-        'USER': 'myprojectuser',
-        'PASSWORD': 'password',
-        'HOST': '127.0.0.1',  # If you're using a cloud database, replace with the hostname
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -122,7 +118,7 @@ USE_TZ = True
 import os
 
 STATIC_URL = '/static/'
-STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles_build', 'public/static')
+STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIR = {
      os.path.join(BASE_DIR, 'public/static')
