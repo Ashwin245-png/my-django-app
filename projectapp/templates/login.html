@@ -95,6 +95,14 @@
         </div>
         <button type="submit">Login</button>
     </form>
+    {% if messages %}
+    <hr>
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
       <center><p class='mt-3'>Don't have an account? <a href="/">Sign up here</a></p></center>
     </div>
 </div>

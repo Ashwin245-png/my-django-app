@@ -38,9 +38,7 @@ def admin(request):
     queryset = App.objects.all()
     users= User.objects.all()
     context = {'App': queryset, 'users':users}
-
-    
-
+ 
     return render(request, 'index.html', context)
 
 
@@ -51,6 +49,7 @@ def admin(request):
 def delete_app(request, id):
     queryset = App.objects.get(id=id)
     queryset.delete()
+    messages.success(request, 'App deleted successfully.')
 
     return redirect('/admin/')
 
@@ -61,6 +60,11 @@ def signup(request):
         username=data.get('username')
         email=data.get('email')
         password=data.get('password')
+        confirm_password=data.get('confirm_password')
+
+        if password != confirm_password:
+            messages.error(request, "Passwords do not match")
+            return redirect('signup')
       
         user=User.objects.filter(username=username)
         if user.exists():
@@ -73,7 +77,8 @@ def signup(request):
         )
         user.set_password(password)
         user.save()
-        messages.info(request, "Account created succesfully")
+        
+        messages.success(request, "Account created succesfully")
         return redirect('signup')
 
     return render(request, 'signup.html')
