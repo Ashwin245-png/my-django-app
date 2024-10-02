@@ -57,20 +57,17 @@ th,td{
 
 /* Style the body to center the profile container */
 .profile {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin-right: 500px;
-    background-color: #f0f0f0;
-    
+    position: relative;
+    right: 500px;
 }
 
 
 /* Profile container styles */
 .profile-container {
+    position: relative;
+    top: 33px;
     background-color: white;
-    padding: 20px;
+    padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 350px;
@@ -127,22 +124,28 @@ p {
 /* Style the body to center the points container */
 .points {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
+    margin: 10px;
+    margin-left:auto;
+    background-color: white;
+    
 }
 
 /* Points container */
 .points-container {
+    position: relative;
+    right: 400px;
     background-color: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 800px;
-    margin-right:400px;
+    width: ;
+    max-width: ;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top:auto;
     margin-bottom:50px;
 }
 
@@ -159,7 +162,7 @@ p {
 
 .pending-points {
     color: #FF9800;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 /* Points table styles */
@@ -176,7 +179,7 @@ p {
 }
 
 .points-table th {
-    background-color: #
+    background-color: #f2f2f2;
 }
 /* Style the body to center the task container */
 .tasks {
@@ -264,7 +267,7 @@ p {
 {% endblock %}
 
 {% block content %}
-<div class='fourth '>
+<div class='fourth'>
 <div class='buttons'>
 <div class="button-container">
     <button class=" toggleButton btn"  data-target='div1'>Home</button>
@@ -277,8 +280,8 @@ p {
     {% endif %}
 </div>
 </div>
-<div id='div2' class='profile contentDiv hidden'>
-    <div class="profile-container">
+<div id='div2' class='profile contentDiv hidden shadow-lg'>
+    <div class="profile-container shadow-lg">
         <h2>User Profile</h2>
         <div class="profile-header">
             <img src="profile-pic.jpg" alt="Profile Picture" class="profile-pic">
@@ -296,7 +299,7 @@ p {
         <button class="edit-profile-btn">Edit Profile</button>
     </div>
 </div>
-<div id='div1' class='third contentDiv '>
+<div id='div1' class='third contentDiv shadow-lg'>
     <h2>Apps</h2>
     <table class="table table-hover">
         <thead>
@@ -324,8 +327,8 @@ p {
       </table>
 
 </div>
-<div id='div3' class='points contentDiv hidden'>
-    <div class="points-container">
+<div id='div3' class='points contentDiv hidden me-5'>
+    <div class="points-container shadow-lg mt-1">
         <h2>Your Points</h2>
         
         <div class="points-summary">
@@ -348,7 +351,7 @@ p {
                 <tr>
                     <td>{{forloop.counter}}</td>
                     <td>Download {{App.app_name}}</td>
-                    <td>{{ request.user.App.app_points }}</td>
+                    <td>                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -356,7 +359,7 @@ p {
     </div>
 
 </div>
-<div id='div4' class="task-container contentDiv hidden">
+<div id='div4' class="task-container contentDiv hidden shadow-lg">
     <h2>Your Tasks</h2>
     
     <table class="task-table">
