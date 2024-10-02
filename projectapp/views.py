@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -49,8 +49,7 @@ def admin(request):
 def delete_app(request, id):
     queryset = App.objects.get(id=id)
     queryset.delete()
-    messages.success(request, 'App deleted successfully.')
-
+    
     return redirect('/admin/')
 
 
@@ -130,3 +129,8 @@ def file_upload_view(request):
      my_file = request.FILES.get('file')
      Doc.objects.create(upload=my_file)
    return JsonResponse({'post': 'false'})
+
+def app_detail(request, app_id):
+    app = get_object_or_404(App, id=app_id)
+    return render(request, 'view.html', {'app': app})
+    

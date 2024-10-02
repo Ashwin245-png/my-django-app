@@ -1,4 +1,6 @@
-{% extends 'index.html' %}
+{% extends 'base.html' %}
+{% block hideable_content %}
+{%endblock%}
 
 {% block title %}Home Page{% endblock %}
 {% block extra_css %}
@@ -11,6 +13,8 @@
         height: 100vh;
         margin: 0;
         background-color: #f0f0f0;
+        position: relative;
+        bottom: 80px;
     }
     
     /* Signup container styles */
